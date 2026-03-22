@@ -1,5 +1,5 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Oi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
 
 :root {
   --color-main-hsl: hsl(34, 87%, 60%);
@@ -24,9 +24,8 @@
 }
 
 .logotype {
-  font-family: "Oi";
+  font-family: "Calistoga";
   font-size: var(--font-sieze-logotype);
-  line-height: 1.5;
   color: var(--text-color-dark);
 }
 
