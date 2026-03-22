@@ -1,4 +1,5 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Oi&display=swap');
 
 :root {
   --color-main-hsl: hsl(34, 87%, 60%);
@@ -12,10 +13,19 @@
   --font-size-text-tiny: calc(0.9rem + 0.1vh);
   --font-size-text-normal: calc(1rem + 0.1vh);
   --font-size-text-big: calc(1.25rem + 0.1vh);
+
+  --font-sieze-logotype: calc(2rem + 0.1vh);
 }
 
 .header {
   background-color: var(--color-main-hsl);
+}
+
+.logotype {
+  font-family: "Oi";
+  font-size: var(--font-sieze-logotype);
+  line-height: 1.5;
+  color: var(--text-color-dark);
 }
 
 .web-navegator__ul {
