@@ -18,6 +18,8 @@
 }
 
 .header {
+  padding: var(--font-size-text-normal) var(--font-size-text-normal) 0 var(--font-size-text-normal);
+
   background-color: var(--color-main-hsl);
 }
 
