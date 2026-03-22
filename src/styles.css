@@ -18,12 +18,12 @@
 }
 
 .header {
-  padding: var(--font-size-text-normal) var(--font-size-text-normal) 0 var(--font-size-text-normal);
-
   background-color: var(--color-main-hsl);
 }
 
 .logotype {
+  padding: var(--font-size-text-normal);
+
   font-family: "Calistoga";
   font-size: var(--font-sieze-logotype);
   color: var(--text-color-dark);
