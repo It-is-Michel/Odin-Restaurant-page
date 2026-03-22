@@ -1,1 +1,11 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
+
+:root {
+  --color-main-hsl: hsl(34, 87%, 60%);
+  --color-secondary-hsl: hsl(9, 61%, 49%);
+  --color-accent-hsl: hsl(91, 100%, 34%);
+  --color-bg-light-hsl: hsl(46, 70%, 86%);
+
+  --text-color-dark: hsl(242, 72%, 14%);
+  --text-color-light: hsl(96, 38%, 95%);
+}
