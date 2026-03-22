@@ -44,6 +44,8 @@
   grid-auto-columns: var(--buttons-width);
   justify-content: center;
   place-items: stretch;
+
+  background-color: var(--color-secondary-hsl);
 }
 
 .web-navegator__home-button,
