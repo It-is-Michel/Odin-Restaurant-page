@@ -1,0 +1,80 @@
+.carousel {
+  --text-color: rgb(28, 28, 28);            /* Editable */
+  --gap-around: 0.5rem;
+  
+  --font-size-title: 2rem;                    /* Editable */
+  
+  --font-size-item-text: 0.9rem;              /* Editable */
+  --font-size-item-title: 1.1rem;             /* Editable */
+  --items-width: 20vh;                        /* Editable */
+  --gap-between-items: 0.5rem;                /* Editable */
+  --item-image-size-default: 100px;
+
+  width: 100%;
+  height: 25vh;                               /* Editable */
+
+  padding: var(--gap-around);
+
+  background-color: whitesmoke;             /* Editable */
+  display: grid;
+  grid-template-rows: calc(2 * var(--font-size-title)) 1fr;
+
+  gap: var(--gap-around);
+  align-items: center;
+
+  color: var(--text-color);
+}
+
+.carousel__title {
+  margin: 0;
+  padding: 0;
+
+  font-size: var(--font-size-title);
+  text-align: center;
+}
+
+.carousel__items-list {
+  align-self: stretch;
+
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, minmax(0px, max-content));
+
+  gap: var(--gap-between-items);
+  justify-content: center;
+
+  list-style: none;
+}
+
+.carousel__item {
+  width: var(--items-width);
+
+  display: grid;
+  grid-template-rows: 1fr repeat(2, min-content);
+  place-items: stretch;
+}
+
+.carousel__item-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.carousel__item-title {
+  margin: 0;
+  padding: 0;
+
+  font-size: var(--font-size-item-title);
+  line-height: 1.5;
+}
+
+.carousel__item-price {
+  margin: 0;
+  padding: 0;
+
+  font-size: var(--font-size-item-text);
+  line-height: 1.5;
+}
