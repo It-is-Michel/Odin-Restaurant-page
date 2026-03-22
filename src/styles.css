@@ -15,11 +15,27 @@
 }
 
 .web-navegator__ul {
+  --buttons-width: 18rex;
+  --buttons-height: calc(2 * var(--font-size-text-normal));
+
+  height: var(--buttons-height);
+
   margin: 0;
   padding: 0;
   list-style: none;
 
   display: grid;
   grid-auto-flow: column;
+  grid-auto-columns: var(--buttons-width);
   justify-content: center;
+  place-items: stretch;
+}
+
+.web-navegator__home-button,
+.web-navegator__pizzas-button,
+.web-navegator__about-button {
+  width: 100%;
+  height: 100%;
+
+  font-size: var(--font-size-text-normal);
 }
