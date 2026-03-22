@@ -9,9 +9,9 @@
   --text-color-dark: hsl(242, 72%, 14%);
   --text-color-light: hsl(96, 38%, 95%);
 
-  --font-size-text-tiny: calc(0.9rem + 0.5vh);
-  --font-size-text-normal: calc(1rem + 0.5vh);
-  --font-size-text-big: calc(1.25rem + 0.5vh);
+  --font-size-text-tiny: calc(0.9rem + 0.1vh);
+  --font-size-text-normal: calc(1rem + 0.1vh);
+  --font-size-text-big: calc(1.25rem + 0.1vh);
 }
 
 .web-navegator__ul {
