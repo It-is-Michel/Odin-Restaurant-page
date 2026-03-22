@@ -36,13 +36,12 @@
   height: var(--buttons-height);
 
   margin: 0;
-  padding: 0;
+  padding: 0 var(--font-size-text-normal);
   list-style: none;
 
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: var(--buttons-width);
-  justify-content: center;
   place-items: stretch;
 
   background-color: var(--color-secondary-hsl);
