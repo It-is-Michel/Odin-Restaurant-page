@@ -20,7 +20,7 @@
   grid-template-rows: calc(2 * var(--font-size-title)) 1fr;
 
   gap: var(--gap-around);
-  align-items: center;
+  align-items: stretch;
 
   color: var(--text-color);
 }
@@ -34,8 +34,6 @@
 }
 
 .carousel__items-list {
-  align-self: stretch;
-
   margin: 0;
   padding: 0;
 
