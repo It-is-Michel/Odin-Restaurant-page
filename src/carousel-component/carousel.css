@@ -31,6 +31,7 @@
 
 .carousel__title {
   grid-area: title;
+  align-self: center;
 
   margin: 0;
   padding: 0;
