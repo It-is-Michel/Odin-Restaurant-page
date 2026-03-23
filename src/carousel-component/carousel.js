@@ -105,8 +105,8 @@ export default class Carousel {
   }
 
   set title(title) {
-    const titleIsNotValid = (typeof title !== "null" && !(typeof title === "string" && title !== ""));
-    if (titleIsNotValid) throw new Error("The title must be a non-empty string or null.");
+    const titleIsNotValid = (typeof title !== "string" || title === "");
+    if (titleIsNotValid) throw new Error("The title must be a non-empty string.");
     this.#title = title;
 
     if (!this.#carouselTitle) {
