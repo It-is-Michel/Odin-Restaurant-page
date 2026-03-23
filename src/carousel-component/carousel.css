@@ -98,8 +98,10 @@
 
 .carousel__move-left-button {
   grid-area: left-button;
+  box-shadow: hsla(0, 0%, 10%, 0.6) 50px 0px 25px -25px inset;
 }
 
 .carousel__move-right-button {
   grid-area: right-button;
+  box-shadow: hsla(0, 0%, 10%, 0.6) -50px 0px 25px -25px inset;
 }
