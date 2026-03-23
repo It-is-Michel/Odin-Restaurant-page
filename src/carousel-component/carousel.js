@@ -92,9 +92,14 @@ export default class Carousel {
   #carouselTitle;
   /** @type {Node} */
   #carouselItemsList;
+  /** @type {Node} */
+  #leftButton;
+  /** @type {Node} */
+  #rightButton;
 
   constructor(title) {
     this.#generateDOM();
+    this.#addEventHandlers();
     
     this.title = title;
   }
@@ -125,7 +130,13 @@ export default class Carousel {
     this.#carouselItemsList.classList.add("carousel__items-list");
     this.#root.appendChild(this.#carouselItemsList);
 
-    this.#addEventHandlers();
+    this.#leftButton = document.createElement("button");
+    this.#leftButton.classList.add("carousel__move-left-button");
+    this.#root.appendChild(this.#leftButton);
+
+    this.#rightButton = document.createElement("button");
+    this.#rightButton.classList.add("carousel__move-right-button");
+    this.#root.appendChild(this.#rightButton);
   }
 
   #addEventHandlers() {
@@ -137,6 +148,16 @@ export default class Carousel {
 
       this.#root.addEventListener("pointerdown", (e) => {
         e.preventDefault();
+
+        if (e.target === this.#leftButton) {
+          this.moveLeft();
+          return;
+        }
+        if (e.target === this.#rightButton) {
+          this.moveRight();
+          return;
+        }
+
         if (!this.#carouselItemsList.contains(e.target)) return;
 
         userIsDragging = true;
