@@ -85,9 +85,6 @@ export default class Carousel {
   #title;
 
   #itemsList = [];
-  #itemsPerPage = 3;
-  #currentPageStartIndex = 0;
-  #currentPageEndIndex;
 
   /** @type {Node} */
   #root;
@@ -95,14 +92,16 @@ export default class Carousel {
   #carouselTitle;
   /** @type {Node} */
   #carouselItemsList;
+  /** @type {Node} */
+  #leftButton;
+  /** @type {Node} */
+  #rightButton;
 
-  constructor(title, itemsPerPage) {
+  constructor(title) {
     this.#generateDOM();
+    this.#addEventHandlers();
     
     this.title = title;
-    this.itemsPerPage = itemsPerPage;
-
-    this.#currentPageEndIndex = this.#currentPageStartIndex + (this.#itemsPerPage - 1);
   }
 
   set title(title) {
@@ -119,13 +118,6 @@ export default class Carousel {
     this.#carouselTitle.textContent = this.#title;
   }
 
-  set itemsPerPage(itemsPerPage) {
-    const itemsPerPageIsNotValid = typeof itemsPerPage !== "number" || itemsPerPage <= 0;
-    if (itemsPerPageIsNotValid) throw new Error("The number of items per page must be greater than 0.");
-
-    this.#itemsPerPage = itemsPerPage;
-  }
-
   get element() {
     return this.#root;
   }
@@ -138,7 +130,66 @@ export default class Carousel {
     this.#carouselItemsList.classList.add("carousel__items-list");
     this.#root.appendChild(this.#carouselItemsList);
 
-    // Add left-right button to carouselItemsList and hidde them to unhidde if necessary
+    this.#leftButton = document.createElement("button");
+    this.#leftButton.classList.add("carousel__move-left-button");
+    this.#root.appendChild(this.#leftButton);
+
+    this.#rightButton = document.createElement("button");
+    this.#rightButton.classList.add("carousel__move-right-button");
+    this.#root.appendChild(this.#rightButton);
+  }
+
+  #addEventHandlers() {
+    const implementDrag = (() => {
+
+      let userIsDragging = false;
+      let startX;
+      let currentX;
+
+      this.#root.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+
+        if (e.target === this.#leftButton) {
+          this.moveLeft();
+          return;
+        }
+        if (e.target === this.#rightButton) {
+          this.moveRight();
+          return;
+        }
+
+        if (!this.#carouselItemsList.contains(e.target)) return;
+
+        userIsDragging = true;
+        startX = e.clientX;
+        currentX = startX;
+      });
+
+      this.#root.addEventListener("pointermove", (e) => {
+        e.preventDefault();
+        if (!userIsDragging) return;
+
+        currentX = e.clientX;
+      });
+
+      this.#root.addEventListener("pointerup", (e) => {
+        e.preventDefault();
+        if (!userIsDragging) return;
+
+        const delta = currentX - startX;
+        if (delta > 0) {
+          this.moveRight();
+        } else if (delta < 0) {
+          this.moveLeft();
+        }
+
+        if (delta === 0) {
+          alert("Sorry, we have no more food. We were hungry ):");
+        }
+
+        userIsDragging = false;
+      })
+    })();
   }
 
   addItem(itemImg, itemName, itemPrice) {
@@ -147,33 +198,22 @@ export default class Carousel {
 
     this.#itemsList.push(newItem);
     this.#carouselItemsList.appendChild(newItem.element);
-
-    this.#updateDisplay();
   }
 
   removeItem(itemUUID) {
     this.#itemsList = this.#itemsList.filter((item) => item.getAttribute("data-carousel-uuid") !== itemUUID);
     this.#carouselItemsList.removeChild(newItem.element);
-
-    this.#updateDisplay();
   }
 
-  #updateDisplay() {
-    this.#itemsList.forEach((item, itemPos) => {
-      if (this.#currentPageStartIndex <= itemPos && itemPos <= this.#currentPageEndIndex) item.element.style.display = "";
-      else item.element.style.display = "none";
-    });
-  }
+  #move(steps) {
+    if (steps === 0 || typeof steps !== "number") throw new Error("Movement amount must be a number, higher or lower than 0.");
 
-  #move(movementsAmount) {
-    const newStartIndexIsOutOfRange = this.#currentPageStartIndex + movementsAmount < 0;
-    const newEndIndexIsOutOfRange = this.#currentPageEndIndex + movementsAmount > (this.#itemsList.length - 1);
-    if (newStartIndexIsOutOfRange || newEndIndexIsOutOfRange) return false;
-
-    this.#currentPageStartIndex += movementsAmount;
-    this.#currentPageEndIndex += movementsAmount;
-
-    this.#updateDisplay();
+    const sum = steps > 0 ? 1 : -1;
+    const moveOneStep = sum > 0 ? () => {this.#carouselItemsList.appendChild(this.#carouselItemsList.firstChild)}
+      : () => {this.#carouselItemsList.insertBefore(this.#carouselItemsList.lastChild, this.#carouselItemsList.firstChild)};
+    for (let i = 0; Math.abs(i) < Math.abs(steps); i += sum) {
+      moveOneStep();
+    }
   }
 
   moveLeft() {
