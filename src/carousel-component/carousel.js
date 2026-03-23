@@ -178,9 +178,9 @@ export default class Carousel {
 
         const delta = currentX - startX;
         if (delta > 0) {
-          this.moveRight();
-        } else if (delta < 0) {
           this.moveLeft();
+        } else if (delta < 0) {
+          this.moveRight();
         }
 
         if (delta === 0) {
