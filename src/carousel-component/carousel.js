@@ -124,8 +124,6 @@ export default class Carousel {
     this.#carouselItemsList = document.createElement("ul");
     this.#carouselItemsList.classList.add("carousel__items-list");
     this.#root.appendChild(this.#carouselItemsList);
-
-    // Add left-right button to carouselItemsList and hidde them to unhidde if necessary
   }
 
   addItem(itemImg, itemName, itemPrice) {
