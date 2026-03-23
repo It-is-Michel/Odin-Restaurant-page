@@ -162,6 +162,10 @@ export default class Carousel {
           this.moveLeft();
         }
 
+        if (delta === 0) {
+          alert("Sorry, we have no more food. We were hungry ):");
+        }
+
         userIsDragging = false;
       })
     })();
