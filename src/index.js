@@ -1,8 +1,12 @@
 import "./styles.css";
+import homePage from "./pages/home/home.js";
 
 const headerNavegator = (() => {
+  const webContent = document.querySelector("#webContent");
+
   function goHome() {
-    throw new Error("Not implemented yet.");
+    webContent.removeChild(webContent.firstChild);
+    webContent.appendChild(homePage);
   }
 
   function goPizzas() {
