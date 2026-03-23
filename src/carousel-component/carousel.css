@@ -43,6 +43,7 @@
 .carousel__items-list {
   grid-row: 2;
   grid-column: 1 / span 3;
+  justify-self: center;
 
   margin: 0;
   padding: 0;
