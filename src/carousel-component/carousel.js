@@ -85,9 +85,6 @@ export default class Carousel {
   #title;
 
   #itemsList = [];
-  #itemsPerPage = 3;
-  #currentPageStartIndex = 0;
-  #currentPageEndIndex;
 
   /** @type {Node} */
   #root;
@@ -96,13 +93,10 @@ export default class Carousel {
   /** @type {Node} */
   #carouselItemsList;
 
-  constructor(title, itemsPerPage) {
+  constructor(title) {
     this.#generateDOM();
     
     this.title = title;
-    this.itemsPerPage = itemsPerPage;
-
-    this.#currentPageEndIndex = this.#currentPageStartIndex + (this.#itemsPerPage - 1);
   }
 
   set title(title) {
@@ -117,13 +111,6 @@ export default class Carousel {
     }
 
     this.#carouselTitle.textContent = this.#title;
-  }
-
-  set itemsPerPage(itemsPerPage) {
-    const itemsPerPageIsNotValid = typeof itemsPerPage !== "number" || itemsPerPage <= 0;
-    if (itemsPerPageIsNotValid) throw new Error("The number of items per page must be greater than 0.");
-
-    this.#itemsPerPage = itemsPerPage;
   }
 
   get element() {
@@ -147,33 +134,22 @@ export default class Carousel {
 
     this.#itemsList.push(newItem);
     this.#carouselItemsList.appendChild(newItem.element);
-
-    this.#updateDisplay();
   }
 
   removeItem(itemUUID) {
     this.#itemsList = this.#itemsList.filter((item) => item.getAttribute("data-carousel-uuid") !== itemUUID);
     this.#carouselItemsList.removeChild(newItem.element);
-
-    this.#updateDisplay();
   }
 
-  #updateDisplay() {
-    this.#itemsList.forEach((item, itemPos) => {
-      if (this.#currentPageStartIndex <= itemPos && itemPos <= this.#currentPageEndIndex) item.element.style.display = "";
-      else item.element.style.display = "none";
-    });
-  }
+  #move(steps) {
+    if (steps === 0 || typeof steps !== "number") throw new Error("Movement amount must be a number, higher or lower than 0.");
 
-  #move(movementsAmount) {
-    const newStartIndexIsOutOfRange = this.#currentPageStartIndex + movementsAmount < 0;
-    const newEndIndexIsOutOfRange = this.#currentPageEndIndex + movementsAmount > (this.#itemsList.length - 1);
-    if (newStartIndexIsOutOfRange || newEndIndexIsOutOfRange) return false;
-
-    this.#currentPageStartIndex += movementsAmount;
-    this.#currentPageEndIndex += movementsAmount;
-
-    this.#updateDisplay();
+    const sum = steps > 0 ? 1 : -1;
+    const moveOneStep = sum > 0 ? () => {this.#carouselItemsList.appendChild(this.#carouselItemsList.firstChild)}
+      : () => {this.#carouselItemsList.insertBefore(this.#carouselItemsList.lastChild, this.#carouselItemsList.firstChild)};
+    for (let i = 0; Math.abs(i) < Math.abs(steps); i += sum) {
+      moveOneStep();
+    }
   }
 
   moveLeft() {
