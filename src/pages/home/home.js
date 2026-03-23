@@ -12,7 +12,7 @@ const generateDOM = (() => {
   const mostSoldPizzasCarousel = new Carousel("Most sold pizzas");
   mostSoldPizzasCarousel.height = "400px";
   mostSoldPizzasCarousel.itemsWidth = "400px";
-  mostSoldPizzasCarousel.backgroundColor = "hsla(360 0% 98% / 0.5)";
+  mostSoldPizzasCarousel.backgroundColor = "transparent";
   mostSoldPizzasCarousel.textColor = "var(--text-color-dark)";
   mostSoldPizzasCarousel.element.style.margin = "45px 0";
   mostSoldPizzasCarousel.addItem(pizzaHawaiianJPG, "Hawaiian", 7.62);
