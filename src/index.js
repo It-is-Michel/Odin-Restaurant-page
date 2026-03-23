@@ -36,3 +36,5 @@ const headerNavegator = (() => {
   const headerNavegator = document.querySelector("#headerNavegator");
   headerNavegator.addEventListener("click", (e) => clickEventHandler(e));
 })();
+
+webContent.appendChild(homePage);
