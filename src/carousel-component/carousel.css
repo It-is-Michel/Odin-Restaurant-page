@@ -37,17 +37,19 @@
   margin: 0;
   padding: 0;
 
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fit, minmax(0px, max-content));
+  display: flex;
 
   gap: var(--gap-between-items);
-  justify-content: center;
+  justify-content: start;
+
+  overflow: hidden;
 
   list-style: none;
 }
 
 .carousel__item {
+  flex: 0 0 auto;
+
   width: var(--items-width);
 
   display: grid;
