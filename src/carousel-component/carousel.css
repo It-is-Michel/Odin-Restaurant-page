@@ -8,6 +8,7 @@
   --font-size-item-title: 1.1rem;             /* Editable */
   --items-width: 20vh;                        /* Editable */
   --gap-between-items: 0.5rem;                /* Editable */
+  --items-list-bg-color: whitesmoke;             /* editable */
   --item-image-size-default: 100px;
 
   width: 100%;
@@ -52,6 +53,8 @@
 
   gap: var(--gap-between-items);
   justify-content: center;
+
+  background-color: var(--items-list-bg-color);
 
   overflow: hidden;
 

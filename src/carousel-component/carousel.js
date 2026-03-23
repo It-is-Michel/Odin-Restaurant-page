@@ -252,6 +252,10 @@ export default class Carousel {
     this.#root.style.setProperty("background-color", color);
   }
   
+  set itemsListBackgroundColor(color) {
+    this.#root.style.setProperty("--items-list-bg-color", color);
+  }
+
   set height(height) {
     this.#root.style.setProperty("height", height);
   }
