@@ -124,6 +124,47 @@ export default class Carousel {
     this.#carouselItemsList = document.createElement("ul");
     this.#carouselItemsList.classList.add("carousel__items-list");
     this.#root.appendChild(this.#carouselItemsList);
+
+    this.#addEventHandlers();
+  }
+
+  #addEventHandlers() {
+    const implementDrag = (() => {
+
+      let userIsDragging = false;
+      let startX;
+      let currentX;
+
+      this.#root.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        if (!this.#carouselItemsList.contains(e.target)) return;
+
+        userIsDragging = true;
+        startX = e.clientX;
+        currentX = startX;
+      });
+
+      this.#root.addEventListener("pointermove", (e) => {
+        e.preventDefault();
+        if (!userIsDragging) return;
+
+        currentX = e.clientX;
+      });
+
+      this.#root.addEventListener("pointerup", (e) => {
+        e.preventDefault();
+        if (!userIsDragging) return;
+
+        const delta = currentX - startX;
+        if (delta > 0) {
+          this.moveRight();
+        } else if (delta < 0) {
+          this.moveLeft();
+        }
+
+        userIsDragging = false;
+      })
+    })();
   }
 
   addItem(itemImg, itemName, itemPrice) {
