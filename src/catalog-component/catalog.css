@@ -1,0 +1,48 @@
+.catalog {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: clamp(8rem, 20vh, 12rem);
+  align-items: stretch;
+  gap: 0.5rem;
+
+  color: black;                               /* editable */
+  background-color: black;                    /* editable */
+  border: transparent solid 0.5rem;             /* editable */
+}
+
+.catalog__item {
+  display: grid;
+  grid-template:
+    "img name " auto
+    "img desc " auto
+    "img price" auto / min-content auto;
+
+  background-color: whitesmoke;
+}
+
+.catalog__itemImgContainer {
+  grid-area: img;
+  align-self: stretch;
+
+  aspect-ratio: 1.2 / 1;
+
+  overflow: hidden;
+
+  margin-right: 2rex;
+}
+
+.catalog__itemImg {
+  width: 100%;
+}
+
+.catalog__itemName {
+  grid-area: name;
+}
+
+.catalog__itemDesc {
+  grid-area: desc;
+}
+
+.catalog__itemPrice {
+  grid-area: price;
+}

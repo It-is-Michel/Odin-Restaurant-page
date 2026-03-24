@@ -58,6 +58,18 @@ class Catalog{
     itemPrice.textContent = `Price: $${price}`;
     item.appendChild(itemPrice);
   }
+
+  set backgroundColor(color) {
+    this.#element.style.backgroundColor = color;
+  }
+
+  set borderColor(color) {
+    this.#element.style.borderColor = color;
+  }
+
+  set textColor(color) {
+    this.#element.style.color = color;
+  }
 }
 
 export default Catalog;
