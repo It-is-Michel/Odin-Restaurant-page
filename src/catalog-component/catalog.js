@@ -39,6 +39,7 @@ class Catalog{
     item.appendChild(itemImgConteiner);
 
     const itemImg = document.createElement("img");
+    itemImg.classList.add("catalog__itemImg");
     itemImg.setAttribute("src", img);
     itemImgConteiner.appendChild(itemImg);
 
