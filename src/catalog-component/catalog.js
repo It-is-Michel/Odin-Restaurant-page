@@ -54,7 +54,7 @@ class Catalog{
 
     const itemPrice = document.createElement("p");
     itemPrice.classList.add("catalog__itemPrice");
-    itemPrice = `Price: $${price}`;
+    itemPrice.textContent = `Price: $${price}`;
     item.appendChild(itemPrice);
   }
 }
