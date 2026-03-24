@@ -41,4 +41,4 @@ const headerNavegator = (() => {
   headerNavegator.addEventListener("click", (e) => clickEventHandler(e));
 })();
 
-webContent.appendChild(aboutPage);
+webContent.appendChild(homePage);
