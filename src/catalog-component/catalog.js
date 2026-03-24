@@ -18,6 +18,18 @@ class Catalog{
   }
 
   addItem(img, productName, desc, price) {
+    const imgIsValid = typeof img === "string" && img.match(/\.(png|svg|jpg|jpeg|gif)$/i);
+    if (!imgIsValid) throw new Error("The img must be an image path. Allowed formats: png, svg, jpg, jpeg, gif.");
+
+    const productNameIsvalid = typeof productName === "string" && productName.length <= 40;
+    if (!productNameIsvalid) throw new Error("The product name must be a string with 40 or less characters.");
+
+    const descIsValid = typeof desc === "string" && desc.length <= 300;
+    if (!descIsValid) throw new Error("The description must be a string with 300 or less characters.");
+
+    const priceIsvalid = typeof price === "number" && price > 0;
+    if (!priceIsvalid) throw new Error("The price must be a number bigger than 0.");
+
     const item = document.createElement("div");
     item.classList.add("catalog__item");
     this.#element.appendChild(item);
