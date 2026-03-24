@@ -1,6 +1,7 @@
 import "./styles.css";
 import homePage from "./pages/home/home.js";
 import pizzasPage from "./pages/pizzas/pizzas.js";
+import aboutPage from "./pages/about/about.js";
 
 const headerNavegator = (() => {
   const webContent = document.querySelector("#webContent");
@@ -16,7 +17,8 @@ const headerNavegator = (() => {
   }
 
   function goAbout() {
-    throw new Error("Not implemented yet.");
+    webContent.removeChild(webContent.firstChild);
+    webContent.appendChild(aboutPage);
   }
 
   function clickEventHandler(e) {
@@ -39,4 +41,4 @@ const headerNavegator = (() => {
   headerNavegator.addEventListener("click", (e) => clickEventHandler(e));
 })();
 
-webContent.appendChild(homePage);
+webContent.appendChild(aboutPage);
