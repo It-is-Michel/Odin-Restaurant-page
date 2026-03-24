@@ -1,11 +1,11 @@
 import "./home.css";
 import Carousel from "../../carousel-component/carousel.js";
 
-import pizzaHawaiianJPG from "./pizzaHawaiian.jpg";
-import pizzaMuzzarellaJPG from "./pizzaMuzzarella.jpg";
-import pizzaNeapolitanJPG from "./pizzaNeapolitan.jpg";
-import pizzaFugazzetaJPG from "./pizzaFugazzeta.jpg";
-import pizzaSpecialJPG from "./pizzaSpecial.jpg";
+import pizzaHawaiianJPG from "../pizzaHawaiian.jpg";
+import pizzaMuzzarellaJPG from "../pizzaMuzzarella.jpg";
+import pizzaNeapolitanJPG from "../pizzaNeapolitan.jpg";
+import pizzaFugazzetaJPG from "../pizzaFugazzeta.jpg";
+import pizzaSpecialJPG from "../pizzaSpecial.jpg";
 
 const homePage = document.createElement("div");
 
